@@ -14,7 +14,7 @@ const BusinessRegister = lazy(() => import('./pages/BusinessRegister'));
 
 export default function RoutesConfig() {
     return (
-        <BrowserRouter>
+        <BrowserRouter /*basename="/react-bizcards"*/>
             <Routes>
                 <Route path="/" element={<DefaultLayout/>}>
                     <Route index element={<Home/>} />

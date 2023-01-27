@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #3b7aff;
+    background-color: #ebebeb;
     color: white;
     font-size: 32px;
     transition: 200ms ease-in;
@@ -16,14 +16,6 @@
 
     z-index: 9999;
     visibility: visible;
-
-    animation: blink 2s ease-in-out infinite;
-
-    @keyframes blink {
-        50% {
-          background-color: #3b7acc;
-        }
-      }
   
     &.fade-out {
       pointer-events: none;
@@ -36,8 +28,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 3px solid #66b3ff;
-    border-top-color: #fff;
+    border: 3px solid #444;
+    border-top-color: #ebebeb;
     animation: spinner 0.6s linear infinite;
 
     @keyframes spinner {

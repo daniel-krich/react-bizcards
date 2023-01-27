@@ -33,7 +33,7 @@ export default function CustomNavbar() {
     };
 
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="light" variant="light" className='shadow'>
             <Container>
                 <Navbar.Brand>Bizcards</Navbar.Brand>
                 <Nav className="me-auto">
@@ -48,7 +48,7 @@ export default function CustomNavbar() {
                             <li className="nav-item">
                                 <a role="button" className="nav-link" onClick={() => logoutAction()}>Logout</a>
                             </li>
-                            <li className="d-flex justify-content-center align-items-center text-white">
+                            <li className="d-flex justify-content-center align-items-center">
                                 <small>({user.name})</small>
                             </li>
                         </>
