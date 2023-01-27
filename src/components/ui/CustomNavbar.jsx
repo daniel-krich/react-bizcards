@@ -1,4 +1,4 @@
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { authorizedMenu, authorizedBusinessMenu, visitorMenu } from '../../data/menu-data';
 import { UserType } from '../../models/UserModel';
@@ -42,19 +42,14 @@ export default function CustomNavbar() {
                             <Link className={conditionalClassNames('nav-link', route.link === location.pathname && 'active')} to={route.link}>{route.label}</Link>
                         </li>
                     ))}
-
-                    {user && userType != UserType.Visitor && (
-                        <>
-                            <li className="nav-item">
-                                <a role="button" className="nav-link" onClick={() => logoutAction()}>Logout</a>
-                            </li>
-                            <li className="d-flex justify-content-center align-items-center">
-                                <small>({user.name})</small>
-                            </li>
-                        </>
-                    )}
-
                 </Nav>
+                <Navbar.Collapse className="justify-content-end">
+                    {user && userType != UserType.Visitor && (
+                        <NavDropdown title={`Logged in as (${user.name})`} menuVariant="light">
+                            <NavDropdown.Item onClick={() => logoutAction()}>Logout</NavDropdown.Item>
+                        </NavDropdown>
+                    )}
+                </Navbar.Collapse>
             </Container>
         </Navbar>
     );

@@ -15,7 +15,7 @@ export default function BusinessCards() {
     };
 
     return (
-        <Container className="white-transparent-bg p-4 rounded">
+        <Container>
             <h1 className="text-center m-0 mb-3 text-white">Business cards</h1>
             <div className="d-flex justify-content-center mb-5">
                 <Button className="ms-3" variant="light" onClick={() => navigate('/business-cards/create')}>Create a new card</Button>
