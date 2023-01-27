@@ -1,19 +1,19 @@
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { authorizedMenu, authorizedBusinessMenu, visitorMenu } from '../../data/menu-data';
-import { useDispatch, useSelector } from "react-redux";
 import { UserType } from '../../models/UserModel';
-import { nullifyUser } from '../../store/authReducer';
 import { logoutLocalStorage } from '../../services/authService';
 import { conditionalClassNames } from '../../helpers/conditionalClassNames';
 import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 export default function CustomNavbar() {
+    const [user, setUser] = useContext(UserContext);
     const navigate = useNavigate();
     const location = useLocation();
 
-    const userType = useSelector((state) => state.auth.user?.type ?? null);
-    const dispatch = useDispatch();
+    const userType = user?.type ?? null;
 
     let currentMenu = visitorMenu;
     if (userType === UserType.Regular) {
@@ -25,7 +25,7 @@ export default function CustomNavbar() {
 
     const logoutAction = () => {
         logoutLocalStorage();
-        dispatch(nullifyUser());
+        setUser(null);
         toast.warn('Logged out', {
             position: toast.POSITION.TOP_RIGHT
         });
@@ -43,10 +43,15 @@ export default function CustomNavbar() {
                         </li>
                     ))}
 
-                    {userType != UserType.Visitor && (
-                        <li className="nav-item">
-                            <a role="button" className="nav-link" onClick={() => logoutAction()}>Logout</a>
-                        </li>
+                    {user && userType != UserType.Visitor && (
+                        <>
+                            <li className="nav-item">
+                                <a role="button" className="nav-link" onClick={() => logoutAction()}>Logout</a>
+                            </li>
+                            <li className="d-flex justify-content-center align-items-center text-white">
+                                <small>({user.name})</small>
+                            </li>
+                        </>
                     )}
 
                 </Nav>

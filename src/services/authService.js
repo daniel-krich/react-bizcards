@@ -1,4 +1,4 @@
-import { CURRENT_USER_ITEM_KEY_LOCAL_STORAGE, USERS_DB_ITEM_KEY_LOCAL_STORAGE } from '../data/constants';
+import { CURRENT_USER_ID_ITEM_KEY_LOCAL_STORAGE, USERS_DB_ITEM_KEY_LOCAL_STORAGE } from '../data/constants';
 import { UserModel } from '../models/UserModel';
 
 export const loginLocalStorage = (email, password) => {
@@ -7,7 +7,7 @@ export const loginLocalStorage = (email, password) => {
 
     const user = usersArray.find(x => x.email === email && x.password === password);
     if(user) {
-        localStorage.setItem(CURRENT_USER_ITEM_KEY_LOCAL_STORAGE, JSON.stringify(user));
+        localStorage.setItem(CURRENT_USER_ID_ITEM_KEY_LOCAL_STORAGE, user.id);
         return user;
     }
 
@@ -15,7 +15,7 @@ export const loginLocalStorage = (email, password) => {
 };
 
 export const logoutLocalStorage = () => {
-    localStorage.removeItem(CURRENT_USER_ITEM_KEY_LOCAL_STORAGE);
+    localStorage.removeItem(CURRENT_USER_ID_ITEM_KEY_LOCAL_STORAGE);
 };
 
 export const checkUserExistance = (email) => {
@@ -45,7 +45,11 @@ export const registerLocalStorage = (email, password, name, type, cards = []) =>
 };
 
 export const getCurrentUserLocalStorage = () => {
-    const user = localStorage.getItem(CURRENT_USER_ITEM_KEY_LOCAL_STORAGE);
-    if(!user) return null;
-    else return JSON.parse(user);
+    const userId = localStorage.getItem(CURRENT_USER_ID_ITEM_KEY_LOCAL_STORAGE);
+    if(!userId) return null;
+    else {
+        const users = localStorage.getItem(USERS_DB_ITEM_KEY_LOCAL_STORAGE);
+        const usersArray = users ? JSON.parse(users) : [];
+        return usersArray.find(x => x.id === userId) ?? null;
+    }
 };

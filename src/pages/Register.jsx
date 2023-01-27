@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerLocalStorage } from '../services/authService';
-import { Form, Button, Container } from 'react-bootstrap';
-import RegisterForm from '../features/authentication/forms/RegisterForm';
+import { Container } from 'react-bootstrap';
+import { RegisterForm } from '../features/authentication';
 import { UserType } from '../models/UserModel';
 import { toast } from 'react-toastify';
 
@@ -22,9 +20,9 @@ export default function Register() {
         }
     }
     return (
-        <Container>
-            <h1>Register</h1>
-            <RegisterForm registerHandle={handleSubmit} />
+        <Container className="bg-white rounded p-4">
+            <h1>Registration</h1>
+            <RegisterForm registerHandle={handleSubmit} submitLabel="Register" />
         </Container>
     );
 }

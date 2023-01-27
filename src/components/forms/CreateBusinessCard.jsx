@@ -1,6 +1,6 @@
 import { Form, Button, Alert } from 'react-bootstrap';
 
-export default function CreateBusinessCard({ createBusinessCardHandle }) {
+export default function CreateBusinessCard({ createBusinessCardHandle, submitLabel }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         createBusinessCardHandle(event);
@@ -28,8 +28,8 @@ export default function CreateBusinessCard({ createBusinessCardHandle }) {
                 <Form.Label>Business image url</Form.Label>
                 <Form.Control type="text" placeholder="Enter business image url" name="businessImageUrl" />
             </Form.Group>
-            <Button variant="primary" type="submit">
-                Create card
+            <Button variant="dark" type="submit">
+                {submitLabel}
             </Button>
         </Form>
     );

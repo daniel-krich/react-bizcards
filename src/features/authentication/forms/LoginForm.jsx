@@ -27,7 +27,7 @@ export default function LoginForm({ loginHandle }) {
                 />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="dark" type="submit">
                 Login
             </Button>
         </Form>

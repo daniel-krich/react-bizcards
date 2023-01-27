@@ -1,3 +1,5 @@
+import { generateHexString } from '../util/generateHexString';
+
 export class UserType {
     static Visitor = null;
     static Regular = 'REGULAR';
@@ -6,6 +8,7 @@ export class UserType {
 
 export class UserModel {
     constructor(email, password, name, type) {
+        this.id = generateHexString();
         this.email = email;
         this.password = password;
         this.name = name;

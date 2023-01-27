@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerLocalStorage, checkUserExistance } from '../services/authService';
-import { Form, Button, Container } from 'react-bootstrap';
-import RegisterForm from '../features/authentication/forms/RegisterForm';
+import { Container } from 'react-bootstrap';
+import { RegisterForm } from '../features/authentication';
 import { UserType } from '../models/UserModel';
 import { toast } from 'react-toastify';
-import CreateBusinessCard from '../components/forms/CreateBusinessCard';
+import { CreateBusinessCard } from '../components';
 import { BusinessCardModel } from '../models/BusinessCardModel';
 
 export default function BusinessRegister() {
@@ -47,9 +47,14 @@ export default function BusinessRegister() {
     };
 
     return (
-        <Container>
-            <h1>Business Register</h1>
-            {registerCredentials ? <CreateBusinessCard createBusinessCardHandle={handleSubmitCard} /> : <RegisterForm registerHandle={handleSubmitRegister} />}
+        <Container className="bg-white rounded p-4">
+            <h1>Business Registration</h1>
+            {
+                registerCredentials ?
+                    <CreateBusinessCard createBusinessCardHandle={handleSubmitCard} submitLabel="Finish registration" />
+                    :
+                    <RegisterForm registerHandle={handleSubmitRegister} submitLabel="Continue" />
+            }
         </Container>
     );
 }

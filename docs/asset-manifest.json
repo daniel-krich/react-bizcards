@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/react-bizcards/static/css/main.80a5d2d5.css",
+    "main.js": "/react-bizcards/static/js/main.7ca887f6.js",
+    "static/js/856.b2136dbc.chunk.js": "/react-bizcards/static/js/856.b2136dbc.chunk.js",
+    "static/js/729.02d6b0a2.chunk.js": "/react-bizcards/static/js/729.02d6b0a2.chunk.js",
+    "static/css/753.4b3cb510.chunk.css": "/react-bizcards/static/css/753.4b3cb510.chunk.css",
+    "static/js/753.ab70b83e.chunk.js": "/react-bizcards/static/js/753.ab70b83e.chunk.js",
+    "static/js/407.2b010a98.chunk.js": "/react-bizcards/static/js/407.2b010a98.chunk.js",
+    "static/js/38.d3987d4c.chunk.js": "/react-bizcards/static/js/38.d3987d4c.chunk.js",
+    "static/js/285.424347ed.chunk.js": "/react-bizcards/static/js/285.424347ed.chunk.js",
+    "static/js/590.d26f3a81.chunk.js": "/react-bizcards/static/js/590.d26f3a81.chunk.js",
+    "index.html": "/react-bizcards/index.html",
+    "main.80a5d2d5.css.map": "/react-bizcards/static/css/main.80a5d2d5.css.map",
+    "main.7ca887f6.js.map": "/react-bizcards/static/js/main.7ca887f6.js.map",
+    "856.b2136dbc.chunk.js.map": "/react-bizcards/static/js/856.b2136dbc.chunk.js.map",
+    "729.02d6b0a2.chunk.js.map": "/react-bizcards/static/js/729.02d6b0a2.chunk.js.map",
+    "753.4b3cb510.chunk.css.map": "/react-bizcards/static/css/753.4b3cb510.chunk.css.map",
+    "753.ab70b83e.chunk.js.map": "/react-bizcards/static/js/753.ab70b83e.chunk.js.map",
+    "407.2b010a98.chunk.js.map": "/react-bizcards/static/js/407.2b010a98.chunk.js.map",
+    "38.d3987d4c.chunk.js.map": "/react-bizcards/static/js/38.d3987d4c.chunk.js.map",
+    "285.424347ed.chunk.js.map": "/react-bizcards/static/js/285.424347ed.chunk.js.map",
+    "590.d26f3a81.chunk.js.map": "/react-bizcards/static/js/590.d26f3a81.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80a5d2d5.css",
+    "static/js/main.7ca887f6.js"
+  ]
+}

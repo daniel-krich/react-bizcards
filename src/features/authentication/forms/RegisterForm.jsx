@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-export default function RegisterForm({ registerHandle }) {
+export default function RegisterForm({ registerHandle, submitLabel }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,8 +22,8 @@ export default function RegisterForm({ registerHandle }) {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" name="password" />
             </Form.Group>
-            <Button variant="primary" type="submit">
-                Register
+            <Button variant="dark" type="submit">
+                {submitLabel}
             </Button>
         </Form>
     );
