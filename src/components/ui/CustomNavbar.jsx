@@ -17,7 +17,7 @@ export default function CustomNavbar({ title, user, logoutAction, pathname }) {
     }
 
     return (
-        <Navbar bg="light" variant="light" className='shadow'>
+        <Navbar bg="light" variant="light" className="shadow flex-wrap">
             <Container>
                 <Navbar.Brand>{title}</Navbar.Brand>
                 <Nav className="me-auto">
