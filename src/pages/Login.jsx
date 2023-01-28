@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { loginLocalStorage } from '../services/authService';
 import { toast } from 'react-toastify';
 import { LoginForm } from '../features/authentication';
-import { useContext } from 'react';
-import { UserContext } from '../context/UserContext';
+import { useUserDetails } from '../context/UserContext';
 
 export default function Login() {
-    const [_, setUser] = useContext(UserContext);
+    const [_, setUser] = useUserDetails();
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -15,7 +14,7 @@ export default function Login() {
         try {
             const user = loginLocalStorage(event.target.email.value, event.target.password.value);
             setUser(user);
-            toast.success(`Hello, ${user.name}`, { position: toast.POSITION.TOP_RIGHT });
+            toast.success(`Hello, ${user.name}.`, { position: toast.POSITION.TOP_RIGHT });
             navigate('/');
         }
         catch {

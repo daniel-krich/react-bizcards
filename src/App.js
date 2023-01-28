@@ -1,18 +1,12 @@
-import RoutesConfig from "./Routes";
-import { UserContext } from "./context/UserContext";
+import Router from "./Router";
 import { ToastContainer } from 'react-toastify';
-import { useState } from "react";
-import { getCurrentUserLocalStorage } from './services/authService';
+import { UserContextProvider } from "./context/UserContext";
 
-function App() {
-    const [user, setUser] = useState(getCurrentUserLocalStorage());
-
+export default function App() {
     return (
-        <UserContext.Provider value={[user, setUser]}>
-            <RoutesConfig />
+        <UserContextProvider>
+            <Router />
             <ToastContainer />
-        </UserContext.Provider>
+        </UserContextProvider>
     );
 }
-
-export default App;

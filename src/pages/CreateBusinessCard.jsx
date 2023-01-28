@@ -1,14 +1,13 @@
-import { useContext } from 'react';
 import { appendCardToUserLocalStorage } from '../services/businessCardsService';
 import { Container } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { CreateBusinessCard as CreateBusinessCardForm } from '../components';
 import { BusinessCardModel } from '../models/BusinessCardModel';
-import { UserContext } from '../context/UserContext';
+import { useUserDetails } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function CreateBusinessCard() {
-    const [user, setUser] = useContext(UserContext);
+    const [user, setUser] = useUserDetails();
     const navigate = useNavigate();
     const handleSubmitCard = (event) => {
         event.preventDefault();
@@ -22,7 +21,7 @@ export default function CreateBusinessCard() {
             const updatedUser = appendCardToUserLocalStorage(user.id, card);
             setUser(updatedUser);
 
-            toast.success('Card creation completed', { position: toast.POSITION.TOP_RIGHT });
+            toast.success('Card creation completed.', { position: toast.POSITION.TOP_RIGHT });
             navigate('/business-cards');
         }
         catch(error) {

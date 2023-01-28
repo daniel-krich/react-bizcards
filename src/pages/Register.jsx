@@ -12,7 +12,7 @@ export default function Register() {
         event.preventDefault();
         try {
             registerLocalStorage(event.target.email.value, event.target.password.value, event.target.name.value, UserType.Regular);
-            toast.success(`Registration completed, ${event.target.name.value}`, { position: toast.POSITION.TOP_RIGHT });
+            toast.success(`Registration completed, ${event.target.name.value}.`, { position: toast.POSITION.TOP_RIGHT });
             navigate('/login');
         }
         catch {

@@ -38,7 +38,7 @@ export default function BusinessRegister() {
                 event.target.businessImageUrl.value);
 
             registerLocalStorage(registerCredentials.email, registerCredentials.password, registerCredentials.name, UserType.Business, [card]);
-            toast.success(`Registration completed, ${registerCredentials.name}`, { position: toast.POSITION.TOP_RIGHT });
+            toast.success(`Registration completed, ${registerCredentials.name}.`, { position: toast.POSITION.TOP_RIGHT });
             navigate('/login');
         }
         catch {

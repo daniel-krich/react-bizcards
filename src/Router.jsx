@@ -1,4 +1,4 @@
-import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
+import { Route, Routes, BrowserRouter, Navigate, Outlet } from "react-router-dom";
 import { lazy } from "react";
 import GuestOnly from "./guards/GuestOnly";
 import BusinessOnly from "./guards/BusinessOnly";
@@ -12,7 +12,7 @@ const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const BusinessRegister = lazy(() => import('./pages/BusinessRegister'));
 
-export default function RoutesConfig() {
+export default function Router() {
     return (
         <BrowserRouter /*basename="/react-bizcards"*/>
             <Routes>
@@ -22,8 +22,10 @@ export default function RoutesConfig() {
                     <Route path="login" element={<GuestOnly component={Login} fallback={'/'} />} />
                     <Route path="register" element={<GuestOnly component={Register} fallback={'/'} />} />
                     <Route path="business-register" element={<GuestOnly component={BusinessRegister} fallback={'/'} />} />
-                    <Route path="business-cards" element={<BusinessOnly component={BusinessCards} fallback={'/login'} />} />
-                    <Route path="business-cards/create" element={<BusinessOnly component={CreateBusinessCard} fallback={'/login'} />} />
+                    <Route path="business-cards" element={<Outlet />}>
+                        <Route index element={<BusinessOnly component={BusinessCards} fallback={'/login'} />} />
+                        <Route path="create" element={<BusinessOnly component={CreateBusinessCard} fallback={'/login'} />} />
+                    </Route>
                     <Route path="*" element={<Navigate to={'/'} />} />
                 </Route>
             </Routes>

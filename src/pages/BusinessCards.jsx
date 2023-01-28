@@ -1,15 +1,18 @@
-import { useContext } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { BusinessCardList } from '../features/business-cards';
-import { UserContext } from '../context/UserContext';
+import { useUserDetails } from '../context/UserContext';
 import { removeCardFromUserLocalStorage } from '../services/businessCardsService';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function BusinessCards() {
-    const [user, setUser] = useContext(UserContext);
+    const [user, setUser] = useUserDetails();
     const navigate = useNavigate();
 
     const removeCard = (cardId) => {
+        toast.success(`Removed "${user.businessCards[cardId].name}" card.`, {
+            position: toast.POSITION.TOP_RIGHT
+        });
         const updatedUser = removeCardFromUserLocalStorage(user.id, cardId);
         setUser(updatedUser);
     };
