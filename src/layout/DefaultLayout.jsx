@@ -28,7 +28,7 @@ export default function DefaultLayout() {
 
             <div className="main">
                 <div className="main-content">
-                    <Suspense fallback={<AutoProgressThinLoading startFrom={0} msByPercent={20} />}>
+                    <Suspense fallback={<AutoProgressThinLoading startFrom={10} step={1} stepDelay={1} msByPercent={30} maxPercent={90} />}>
                         <div className="m-4">
                             <Outlet />
                         </div>

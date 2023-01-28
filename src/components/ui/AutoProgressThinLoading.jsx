@@ -2,15 +2,21 @@ import { useEffect, useState } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import './LoadingOverlay.scss';
 
-export default function AutoProgressThinLoading({ startFrom, msByPercent }) {
+export default function AutoProgressThinLoading({ startFrom, msByPercent, step, stepDelay, maxPercent = 100 }) {
     const [progress, setProgress] = useState(startFrom);
     useEffect(() => {
         let disposed = false;
         (async () => {
-            for (let i = 0; i <= 100; i++) {
+            for (let i = startFrom + 1; i <= maxPercent; i++) {
                 if (!disposed) {
-                    setProgress(i);
-                    await new Promise((res) => setTimeout(() => res(), msByPercent));
+                    if(i % step == 0) {
+                        setProgress(i);
+                        await new Promise((res) => setTimeout(() => res(), stepDelay));
+                    }
+                    else {
+                        await new Promise((res) => setTimeout(() => res(), msByPercent));
+                    }
+                    
                 }
                 else return;
             }
@@ -20,6 +26,6 @@ export default function AutoProgressThinLoading({ startFrom, msByPercent }) {
         };
     }, []);
     return (
-        <ProgressBar style={{ borderRadius: 0, height: 3 }} now={progress} />
+        <ProgressBar style={{ borderRadius: 0, height: 4 }} now={progress} />
     );
 }
