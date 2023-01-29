@@ -7,6 +7,7 @@ import { UserType } from '../models/UserModel';
 import { toast } from 'react-toastify';
 import { CreateBusinessCard } from '../components';
 import { BusinessCardModel } from '../models/BusinessCardModel';
+import { FallbackPageMemoizer } from '../context/FallbackContext';
 
 export default function BusinessRegister() {
     const navigate = useNavigate();
@@ -47,14 +48,16 @@ export default function BusinessRegister() {
     };
 
     return (
-        <Container className="bg-white rounded p-4">
-            <h1>Business Registration</h1>
-            {
-                registerCredentials ?
-                    <CreateBusinessCard createBusinessCardHandle={handleSubmitCard} submitLabel="Finish registration" />
-                    :
-                    <RegisterForm registerHandle={handleSubmitRegister} submitLabel="Continue" />
-            }
-        </Container>
+        <FallbackPageMemoizer>
+            <Container className="bg-white rounded p-4">
+                <h1>Business Registration</h1>
+                {
+                    registerCredentials ?
+                        <CreateBusinessCard createBusinessCardHandle={handleSubmitCard} submitLabel="Finish registration" />
+                        :
+                        <RegisterForm registerHandle={handleSubmitRegister} submitLabel="Continue" />
+                }
+            </Container>
+        </FallbackPageMemoizer>
     );
 }

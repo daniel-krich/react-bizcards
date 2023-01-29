@@ -4,7 +4,7 @@ import { authorizedMenu, authorizedBusinessMenu, visitorMenu } from '../../data/
 import { UserType } from '../../models/UserModel';
 import { conditionalClassNames } from '../../helpers/conditionalClassNames';
 
-export default function CustomNavbar({ title, user, logoutAction, pathname }) {
+export default function CustomNavbar({ children, title, user, logoutAction, pathname }) {
 
     const userType = user?.type ?? null;
 
@@ -17,10 +17,10 @@ export default function CustomNavbar({ title, user, logoutAction, pathname }) {
     }
 
     return (
-        <Navbar bg="light" variant="light" className="shadow flex-wrap">
+        <Navbar bg="light" variant="light" className="position-relative shadow flex-wrap">
             <Container>
                 <Navbar.Brand>{title}</Navbar.Brand>
-                <Nav className="me-auto">
+                <Nav className="me-auto flex-wrap">
                     {currentMenu.map((route, index) => (
                         <li key={index} className="nav-item">
                             <Link className={conditionalClassNames('nav-link', (route.link.length > 1 ? pathname.startsWith(route.link) : route.link === pathname) && 'active')} to={route.link}>{route.label}</Link>
@@ -35,6 +35,7 @@ export default function CustomNavbar({ title, user, logoutAction, pathname }) {
                     )}
                 </Navbar.Collapse>
             </Container>
+            {children}
         </Navbar>
     );
 }

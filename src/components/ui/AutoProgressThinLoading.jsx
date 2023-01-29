@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import './LoadingOverlay.scss';
 
+
+const progressStyles = { position: 'absolute', bottom: 0, borderRadius: 0, height: 4, width: '100%' };
+
 export default function AutoProgressThinLoading({ startFrom, msByPercent, step, stepDelay, maxPercent = 100 }) {
     const [progress, setProgress] = useState(startFrom);
     useEffect(() => {
@@ -25,7 +28,5 @@ export default function AutoProgressThinLoading({ startFrom, msByPercent, step, 
             disposed = true;
         };
     }, []);
-    return (
-        <ProgressBar style={{ borderRadius: 0, height: 4 }} now={progress} />
-    );
+    return (<ProgressBar style={progressStyles} now={progress} />);
 }

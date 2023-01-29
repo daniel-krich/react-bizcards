@@ -1,14 +1,9 @@
 import { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 export default function LoginForm({ loginHandle }) {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        loginHandle(event);
-    };
-
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={loginHandle}>
             <Form.Group className='mb-3' controlId="formEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" name='email' required minLength={5} maxLength={64}/>

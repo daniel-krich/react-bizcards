@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import { RegisterForm } from '../features/authentication';
 import { UserType } from '../models/UserModel';
 import { toast } from 'react-toastify';
+import { FallbackPageMemoizer } from '../context/FallbackContext';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -20,9 +21,11 @@ export default function Register() {
         }
     }
     return (
-        <Container className="bg-white rounded p-4">
-            <h1>Registration</h1>
-            <RegisterForm registerHandle={handleSubmit} submitLabel="Register" />
-        </Container>
+        <FallbackPageMemoizer>
+            <Container className="bg-white rounded p-4">
+                <h1>Registration</h1>
+                <RegisterForm registerHandle={handleSubmit} submitLabel="Register" />
+            </Container>
+        </FallbackPageMemoizer>
     );
 }

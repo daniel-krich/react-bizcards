@@ -7,8 +7,10 @@ import './DefaultLayout.scss';
 import { useUserDetails } from "../context/UserContext";
 import { logoutLocalStorage } from "../services/authService";
 import { toast } from "react-toastify";
+import { FallbackPageMemoizer, useFallback, FallbackPlaceholder } from '../context/FallbackContext';
 
 export default function DefaultLayout() {
+    const [ fallback ] = useFallback();
     const [user, setUser] = useUserDetails();
     const navigate = useNavigate();
     const { pathname } = useLocation();
@@ -21,17 +23,17 @@ export default function DefaultLayout() {
         });
         navigate('/');
     };
-
+    
     return (
         <main className="default-layout">
-            <CustomNavbar title="Bizcards" user={user} logoutAction={logoutAction} pathname={pathname} />
-
+            <CustomNavbar title="Bizcards" user={user} logoutAction={logoutAction} pathname={pathname}>
+                { fallback.isLoading && <AutoProgressThinLoading startFrom={10} step={1} stepDelay={1} msByPercent={30} maxPercent={90} />}
+            </CustomNavbar>
+            
             <div className="main">
-                <div className="main-content">
-                    <Suspense fallback={<AutoProgressThinLoading startFrom={10} step={1} stepDelay={1} msByPercent={30} maxPercent={90} />}>
-                        <div className="m-4">
-                            <Outlet />
-                        </div>
+                <div className="main-content m-4">
+                    <Suspense fallback={<FallbackPlaceholder />}>
+                        <Outlet />
                     </Suspense>
                 </div>
                 <Footer />

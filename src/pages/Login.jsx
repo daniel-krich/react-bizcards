@@ -4,6 +4,7 @@ import { loginLocalStorage } from '../services/authService';
 import { toast } from 'react-toastify';
 import { LoginForm } from '../features/authentication';
 import { useUserDetails } from '../context/UserContext';
+import { FallbackPageMemoizer } from '../context/FallbackContext';
 
 export default function Login() {
     const [_, setUser] = useUserDetails();
@@ -22,9 +23,11 @@ export default function Login() {
         }
     }
     return (
-        <Container className="bg-white rounded p-4">
-            <h1>Login</h1>
-            <LoginForm loginHandle={handleSubmit} />
-        </Container>
+        <FallbackPageMemoizer>
+            <Container className="bg-white rounded p-4">
+                <h1>Login</h1>
+                <LoginForm loginHandle={handleSubmit} />
+            </Container>
+        </FallbackPageMemoizer>
     );
 }

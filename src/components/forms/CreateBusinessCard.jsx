@@ -1,13 +1,8 @@
 import { Form, Button, Alert } from 'react-bootstrap';
 
 export default function CreateBusinessCard({ createBusinessCardHandle, submitLabel }) {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        createBusinessCardHandle(event);
-    };
-
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={createBusinessCardHandle}>
             <Form.Group className='mb-3'>
                 <Form.Label>Business name</Form.Label>
                 <Form.Control type="text" placeholder="Enter business name" name="businessName" required minLength={5} maxLength={64} />

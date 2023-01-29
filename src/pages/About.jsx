@@ -1,10 +1,13 @@
 import { Container } from "react-bootstrap";
 import { AboutInfo } from "../features/about";
+import { FallbackPageMemoizer } from '../context/FallbackContext';
 
 export default function About() {
     return (
-        <Container>
-            <AboutInfo />
-        </Container>
+        <FallbackPageMemoizer>
+            <Container>
+                <AboutInfo />
+            </Container>
+        </FallbackPageMemoizer>
     );
 }
